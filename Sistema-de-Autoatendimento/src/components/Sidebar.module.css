@@ -1,0 +1,20 @@
+.sidebar {
+  background: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.categoria {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ativa {
+  background: #d80000;
+  color: white;
+}

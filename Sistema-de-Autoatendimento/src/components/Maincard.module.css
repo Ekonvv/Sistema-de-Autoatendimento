@@ -1,0 +1,17 @@
+.topo {
+  background: #d80000;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.topo h1 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.topo p {
+  margin-top: 5px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}

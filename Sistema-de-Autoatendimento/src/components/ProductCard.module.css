@@ -1,0 +1,32 @@
+.item {
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 0 5px #ccc;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+h3 {
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.preco {
+  margin-bottom: 10px;
+  color: #777;
+}
+
+button {
+  background: #1b9e1b;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}

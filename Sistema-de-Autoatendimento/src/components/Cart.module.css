@@ -1,0 +1,30 @@
+.carrinho {
+  background: #ffffff;
+  padding: 20px;
+  border-left: 2px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.vazio {
+  text-align: center;
+  margin-top: 30px;
+  flex: 1;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+.pagar {
+  background: #d80000;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}

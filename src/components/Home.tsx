@@ -1,4 +1,3 @@
-
 import { Cart } from "./Cart";
 import "./Home.css";
 import { Maincard } from "./Maincard";
@@ -17,22 +16,22 @@ export function Home() {
           <ProductCard
             title="Cheeseburger"
             price="R$ 12,90"
-            img="https://via.placeholder.com/300x180"
+            img="../Cheeseburger.jpg"
           />
           <ProductCard
             title="Duplo Bacon"
             price="R$ 18,90"
-            img="https://via.placeholder.com/300x180"
+            img="../DuploBacon.png"
           />
           <ProductCard
             title="Chicken Crispy"
             price="R$ 14,90"
-            img="https://via.placeholder.com/300x180"
+            img="../ChickenCrispy.avif"
           />
           <ProductCard
             title="Mega Burguer"
             price="R$ 21,90"
-            img="https://via.placeholder.com/300x180"
+            img="../MegaBurguer.jpg"
           />
         </main>
 

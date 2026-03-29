@@ -5,6 +5,11 @@ import { Maincard } from "./Maincard";
 import { ProductCard } from "./ProductCard";
 import { Sidebar } from "./Sidebar";
 
+type CartItem = {
+  title: string;
+  price: string;
+};
+
 const PRODUCTS: Record<
   string,
   { title: string; price: string; img: string }[]
@@ -44,8 +49,13 @@ const PRODUCTS: Record<
 
 export function Home() {
   const [activeCategory, setActiveCategory] = useState("Lanches");
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const products = PRODUCTS[activeCategory] ?? [];
+
+  function addToCart(title: string, price: string) {
+    setCart((prev) => [...prev, { title, price }]);
+  }
 
   return (
     <div className="tela">
@@ -61,11 +71,12 @@ export function Home() {
               title={p.title}
               price={p.price}
               img={p.img}
+              onAdd={() => addToCart(p.title, p.price)}
             />
           ))}
         </main>
 
-        <Cart />
+        <Cart cart={cart} />
       </div>
     </div>
   );

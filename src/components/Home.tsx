@@ -8,6 +8,7 @@ import { Sidebar } from "./Sidebar";
 type CartItem = {
   title: string;
   price: string;
+  qty: number;
 };
 
 const PRODUCTS: Record<
@@ -54,7 +55,34 @@ export function Home() {
   const products = PRODUCTS[activeCategory] ?? [];
 
   function addToCart(title: string, price: string) {
-    setCart((prev) => [...prev, { title, price }]);
+    setCart((prev) => [...prev, { title, price, qty: 1 }]);
+  }
+
+  function removeFromCart(index: number) {
+    setCart((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  // Botões + e −: se chegar a 0 remove o item
+  function adjustQty(index: number, delta: number) {
+    setCart((prev) =>
+      prev
+        .map((item, i) =>
+          i === index ? { ...item, qty: item.qty + delta } : item,
+        )
+        .filter((item) => item.qty > 0),
+    );
+  }
+
+  // Digitação direta no input: remove se ficar vazio ou < 1
+  function updateQty(index: number, value: string) {
+    const qty = parseInt(value);
+    if (!isNaN(qty) && qty >= 1) {
+      setCart((prev) =>
+        prev.map((item, i) => (i === index ? { ...item, qty } : item)),
+      );
+    } else {
+      setCart((prev) => prev.filter((_, i) => i !== index));
+    }
   }
 
   return (
@@ -76,7 +104,12 @@ export function Home() {
           ))}
         </main>
 
-        <Cart cart={cart} />
+        <Cart
+          cart={cart}
+          onRemove={removeFromCart}
+          onAdjust={adjustQty}
+          onUpdateQty={updateQty}
+        />
       </div>
     </div>
   );

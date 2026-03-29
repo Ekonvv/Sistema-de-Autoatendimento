@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 15px;
+  overflow-y: auto;
 }
 
 .categoria {
@@ -12,9 +13,21 @@
   border-radius: 10px;
   font-size: 20px;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.categoria:hover {
+  border-color: #d80000;
+  color: #d80000;
 }
 
 .ativa {
   background: #d80000;
+  color: white;
+  font-weight: 700;
+}
+
+.ativa:hover {
   color: white;
 }

@@ -1,12 +1,33 @@
+import { useState } from "react";
 import styles from "./Sidebar.module.css";
 
-export function Sidebar() {
+const CATEGORIAS = [
+  { key: "Lanches", label: "🍔 Lanches" },
+  { key: "Acompanhamentos", label: "🍟 Acompanhamentos" },
+  { key: "Bebidas", label: "🥤 Bebidas" },
+  { key: "Sobremesas", label: "🍦 Sobremesas" },
+  { key: "Combos", label: "🎁 Combos" },
+];
+
+type SidebarProps = {
+  activeCategory: string;
+  onSelect: (category: string) => void;
+};
+
+export function Sidebar({ activeCategory, onSelect }: SidebarProps) {
   return (
     <aside className={styles.sidebar}>
-      <div className={`${styles.categoria} ${styles.ativa}`}>🍔 Lanches</div>
-      <div className={styles.categoria}>🍟 Combos</div>
-      <div className={styles.categoria}>🥤 Bebidas</div>
-      <div className={styles.categoria}>🍦 Sobremesas</div>
+      {CATEGORIAS.map((cat) => (
+        <div
+          key={cat.key}
+          className={`${styles.categoria} ${
+            activeCategory === cat.key ? styles.ativa : ""
+          }`}
+          onClick={() => onSelect(cat.key)}
+        >
+          {cat.label}
+        </div>
+      ))}
     </aside>
   );
 }

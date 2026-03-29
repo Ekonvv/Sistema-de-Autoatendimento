@@ -51,6 +51,7 @@ const PRODUCTS: Record<
 export function Home() {
   const [activeCategory, setActiveCategory] = useState("Lanches");
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [paid, setPaid] = useState(false);
 
   const products = PRODUCTS[activeCategory] ?? [];
 
@@ -62,7 +63,6 @@ export function Home() {
     setCart((prev) => prev.filter((_, i) => i !== index));
   }
 
-  // Botões + e −: se chegar a 0 remove o item
   function adjustQty(index: number, delta: number) {
     setCart((prev) =>
       prev
@@ -73,7 +73,6 @@ export function Home() {
     );
   }
 
-  // Digitação direta no input: remove se ficar vazio ou < 1
   function updateQty(index: number, value: string) {
     const qty = parseInt(value);
     if (!isNaN(qty) && qty >= 1) {
@@ -83,6 +82,15 @@ export function Home() {
     } else {
       setCart((prev) => prev.filter((_, i) => i !== index));
     }
+  }
+
+  // Mostra confirmação por 3 segundos e limpa o carrinho
+  function handlePay() {
+    setPaid(true);
+    setTimeout(() => {
+      setPaid(false);
+      setCart([]);
+    }, 3000);
   }
 
   return (
@@ -106,9 +114,11 @@ export function Home() {
 
         <Cart
           cart={cart}
+          paid={paid}
           onRemove={removeFromCart}
           onAdjust={adjustQty}
           onUpdateQty={updateQty}
+          onPay={handlePay}
         />
       </div>
     </div>

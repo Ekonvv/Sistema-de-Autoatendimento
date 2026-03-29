@@ -8,17 +8,45 @@ type CartItem = {
 
 type CartProps = {
   cart: CartItem[];
+  paid: boolean;
   onRemove: (index: number) => void;
   onAdjust: (index: number, delta: number) => void;
   onUpdateQty: (index: number, value: string) => void;
+  onPay: () => void;
 };
 
-export function Cart({ cart, onRemove, onAdjust, onUpdateQty }: CartProps) {
+function parsePrice(price: string): number {
+  return parseFloat(price.replace("R$", "").replace(",", ".").trim());
+}
+
+export function Cart({
+  cart,
+  paid,
+  onRemove,
+  onAdjust,
+  onUpdateQty,
+  onPay,
+}: CartProps) {
+  const total = cart.reduce(
+    (sum, item) => sum + parsePrice(item.price) * item.qty,
+    0,
+  );
+
   return (
     <aside className={styles.carrinho}>
       <h2>SEU PEDIDO</h2>
 
-      {cart.length === 0 ? (
+      {/* Tela de confirmação */}
+      {paid && (
+        <div className={styles.confirmado}>
+          <span className={styles.icone}>✅</span>
+          <h3>Pedido Confirmado!</h3>
+          <p>Estamos preparando tudo com carinho 🍔</p>
+        </div>
+      )}
+
+      {/* Carrinho vazio */}
+      {!paid && cart.length === 0 && (
         <div className={styles.vazio}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
@@ -27,102 +55,49 @@ export function Cart({ cart, onRemove, onAdjust, onUpdateQty }: CartProps) {
           />
           <p>Seu carrinho está vazio</p>
         </div>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: 1 }}>
-          {cart.map((item, index) => (
-            <li
-              key={index}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "10px 0",
-                borderBottom: "1px solid #f0f0f0",
-                fontSize: "15px",
-                gap: "8px",
-              }}
-            >
-              {/* Nome */}
-              <span style={{ flex: 1 }}>{item.title}</span>
+      )}
 
-              {/* Preço */}
-              <span
-                style={{ color: "#d80000", fontWeight: 700, flexShrink: 0 }}
-              >
-                {item.price}
+      {/* Lista de itens */}
+      {!paid && cart.length > 0 && (
+        <ul className={styles.lista}>
+          {cart.map((item, index) => (
+            <li key={index} className={styles.itemLinha}>
+              <span className={styles.itemNome}>{item.title}</span>
+
+              <span className={styles.itemPreco}>
+                R${" "}
+                {(parsePrice(item.price) * item.qty)
+                  .toFixed(2)
+                  .replace(".", ",")}
               </span>
 
-              {/* Controles de quantidade */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "4px",
-                  flexShrink: 0,
-                }}
-              >
+              <div className={styles.qtdControles}>
                 <button
+                  className={styles.btnMenos}
                   onClick={() => onAdjust(index, -1)}
-                  style={{
-                    width: 26,
-                    height: 26,
-                    background: "#f0f0f0",
-                    border: "none",
-                    borderRadius: 6,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                  }}
                 >
                   −
                 </button>
 
                 <input
+                  className={styles.inputQtd}
                   type="number"
                   min="1"
                   value={item.qty}
                   onChange={(e) => onUpdateQty(index, e.target.value)}
-                  style={{
-                    width: 36,
-                    height: 26,
-                    textAlign: "center",
-                    border: "1px solid #ddd",
-                    borderRadius: 6,
-                    fontSize: 14,
-                    fontWeight: 700,
-                  }}
                 />
 
                 <button
+                  className={styles.btnMais}
                   onClick={() => onAdjust(index, 1)}
-                  style={{
-                    width: 26,
-                    height: 26,
-                    background: "#d80000",
-                    border: "none",
-                    borderRadius: 6,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    color: "white",
-                    cursor: "pointer",
-                  }}
                 >
                   +
                 </button>
               </div>
 
-              {/* Remover */}
               <button
+                className={styles.btnRemover}
                 onClick={() => onRemove(index)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#ccc",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  padding: "0 2px",
-                  lineHeight: 1,
-                  flexShrink: 0,
-                }}
                 title="Remover"
               >
                 ✕
@@ -132,12 +107,23 @@ export function Cart({ cart, onRemove, onAdjust, onUpdateQty }: CartProps) {
         </ul>
       )}
 
-      <div className={styles.total}>
-        <span>Total:</span>
-        <b>R$ 0,00</b>
-      </div>
+      {/* Rodapé */}
+      {!paid && (
+        <>
+          <div className={styles.total}>
+            <span>Total:</span>
+            <b>R$ {total.toFixed(2).replace(".", ",")}</b>
+          </div>
 
-      <button className={styles.pagar}>IR PARA O PAGAMENTO</button>
+          <button
+            className={styles.pagar}
+            onClick={onPay}
+            disabled={cart.length === 0}
+          >
+            IR PARA O PAGAMENTO
+          </button>
+        </>
+      )}
     </aside>
   );
 }

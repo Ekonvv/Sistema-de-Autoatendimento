@@ -4,19 +4,160 @@
   border-left: 2px solid #ddd;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
+.carrinho h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ── Estado vazio ── */
 .vazio {
   text-align: center;
   margin-top: 30px;
   flex: 1;
 }
 
+/* ── Confirmação de pagamento ── */
+.confirmado {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.confirmado .icone {
+  font-size: 60px;
+}
+
+.confirmado h3 {
+  color: #1b9e1b;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0;
+}
+
+.confirmado p {
+  color: #777;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ── Lista de itens ── */
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.lista::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lista::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+/* ── Item individual ── */
+.itemLinha {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 8px;
+}
+
+.itemNome {
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemPreco {
+  color: #d80000;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ── Controles de quantidade ── */
+.qtdControles {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btnMenos {
+  width: 26px;
+  height: 26px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btnMais {
+  width: 26px;
+  height: 26px;
+  background: #d80000;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+}
+
+.inputQtd {
+  width: 36px;
+  height: 26px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.inputQtd::-webkit-inner-spin-button,
+.inputQtd::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* ── Botão remover ── */
+.btnRemover {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.btnRemover:hover {
+  color: #d80000;
+}
+
+/* ── Rodapé ── */
 .total {
   display: flex;
   justify-content: space-between;
   font-size: 22px;
   margin: 20px 0;
+  flex-shrink: 0;
 }
 
 .pagar {
@@ -27,4 +168,17 @@
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
+  flex-shrink: 0;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.pagar:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagar:not(:disabled):hover {
+  background: #b80000;
 }

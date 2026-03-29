@@ -12,7 +12,7 @@ type CartProps = {
   onRemove: (index: number) => void;
   onAdjust: (index: number, delta: number) => void;
   onUpdateQty: (index: number, value: string) => void;
-  onPay: () => void;
+  onPay: () => void; // agora navega para a página de pagamento
 };
 
 function parsePrice(price: string): number {
@@ -120,7 +120,7 @@ export function Cart({
             onClick={onPay}
             disabled={cart.length === 0}
           >
-            IR PARA O PAGAMENTO
+            IR PARA O PAGAMENTO →
           </button>
         </>
       )}

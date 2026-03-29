@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Cart } from "./Cart";
 import "./Home.css";
 import { Maincard } from "./Maincard";
+import { Pagamento } from "./Pagamento";
 import { ProductCard } from "./ProductCard";
 import { Sidebar } from "./Sidebar";
 
@@ -52,6 +53,7 @@ export function Home() {
   const [activeCategory, setActiveCategory] = useState("Lanches");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [paid, setPaid] = useState(false);
+  const [pagina, setPagina] = useState<"home" | "pagamento">("home");
 
   const products = PRODUCTS[activeCategory] ?? [];
 
@@ -84,15 +86,31 @@ export function Home() {
     }
   }
 
-  // Mostra confirmação por 3 segundos e limpa o carrinho
-  function handlePay() {
-    setPaid(true);
-    setTimeout(() => {
-      setPaid(false);
-      setCart([]);
-    }, 3000);
+  // Navega para a página de pagamento
+  function irParaPagamento() {
+    setPagina("pagamento");
   }
 
+  // Chamado após confirmar o pagamento: limpa tudo e volta
+  function confirmarPagamento() {
+    setPaid(true);
+    setCart([]);
+    setPagina("home");
+    setTimeout(() => setPaid(false), 3000);
+  }
+
+  // ── Renderiza página de pagamento ──
+  if (pagina === "pagamento") {
+    return (
+      <Pagamento
+        cart={cart}
+        onVoltar={() => setPagina("home")}
+        onConfirmar={confirmarPagamento}
+      />
+    );
+  }
+
+  // ── Renderiza tela principal ──
   return (
     <div className="tela">
       <Maincard />
@@ -118,7 +136,7 @@ export function Home() {
           onRemove={removeFromCart}
           onAdjust={adjustQty}
           onUpdateQty={updateQty}
-          onPay={handlePay}
+          onPay={irParaPagamento}
         />
       </div>
     </div>

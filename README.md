@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+🍔 Sistema de Compras para Totem de Fast Food
+📌 Sobre o Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto consiste em um sistema de autoatendimento (totem) para fast-food, desenvolvido com o objetivo de tornar o processo de compra mais rápido, prático e intuitivo. O sistema permite que o cliente navegue pelo cardápio, selecione produtos e finalize o pedido sem a necessidade de atendimento humano, otimizando filas e melhorando a experiência do usuário.
 
-Currently, two official plugins are available:
+🚀 Funcionalidades
+* Adicionar produtos ao carrinho
+* Remover itens do carrinho
+* Seleção de lanches
+* Escolha de acompanhamentos
+* Seleção de bebidas
+* Escolha de sobremesas
+* Visualização do valor total do pedido
+* Tecnologias Utilizadas
+* React 18
+* Vite
+* CSS Modules
+* TypeScript
+* PostgreSQ
+* Arquitetura
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O sistema foi desenvolvido com foco em Frontend, utilizando uma arquitetura baseada em componentes reutilizáveis.
 
-## React Compiler
+Principais conceitos:
+* Componentização: Separação da interface em partes reutilizáveis
+* Tipagem Estática: Uso do TypeScript para evitar erros
+* Gerenciamento de Estado: Hooks do React (useState)
+* Estilização Modular: CSS isolado por componente
+* Build otimizado: Utilização do Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📋 Requisitos do Sistema
+Funcionais:
+Inserir dados no banco de dados
+Exibir produtos no cardápio
+Permitir adicionar/remover itens do carrinho
 
-## Expanding the ESLint configuration
+Não Funcionais:
+Integração com banco PostgreSQL
+Interface rápida e intuitiva
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🖥️ Estrutura do Sistema
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O sistema é dividido em componentes como:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Botão de Produto
+Lista de Menu
+Carrinho de Compras
+Resumo do Pedido
+Itens de Combo
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🎯 Objetivo
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O principal objetivo do projeto é melhorar a eficiência no atendimento em estabelecimentos de fast-food, reduzindo filas e proporcionando autonomia ao cliente.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📥 Clonar repositório pelo link
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Abra seu terminal e digite esse código
+
+git clone https://github.com/Ekonvv/Sistema-de-Autoatendimento.git
+
+Selecione a pasta e abra no teminal, depois coloque os seguintes códigos:
+
+npm install
+npm run dev

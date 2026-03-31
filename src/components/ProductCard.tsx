@@ -10,10 +10,20 @@ type ProductCardProps = {
 export function ProductCard({ title, price, img, onAdd }: ProductCardProps) {
   return (
     <div className={styles.item}>
-      <img src={img} alt={title} />
-      <h3>{title}</h3>
-      <p className={styles.preco}>{price}</p>
-      <button onClick={onAdd}>ADICIONAR</button>
+      <div className={styles.cordaTopo} />
+
+      <div className={styles.imgArea}>
+        <img src={img} alt={title} />
+      </div>
+
+      <div className={styles.corpo}>
+        <h3>{title}</h3>
+        <div className={styles.estrelas}>⭐⭐⭐</div>
+        <p className={styles.preco}>{price}</p>
+        <button className={styles.btnAdicionar} onClick={onAdd}>
+          🍬 ADICIONAR
+        </button>
+      </div>
     </div>
   );
 }

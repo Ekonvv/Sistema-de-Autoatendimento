@@ -1,32 +1,120 @@
 .item {
   background: white;
-  border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 0 5px #ccc;
+  border-radius: 20px;
+  padding: 0;
+  border: 3px solid var(--verde-claro);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: 0 5px 0 var(--verde-escuro);
 }
 
-img {
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 0 var(--verde-escuro);
+  border-color: var(--amarelo);
+}
+
+/* Corda pendurada */
+.cordaTopo {
+  width: 6px;
+  height: 22px;
+  margin: 0 auto;
+  border-radius: 0 0 3px 3px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--marrom-claro) 0px,
+    var(--marrom-claro) 5px,
+    var(--marrom) 5px,
+    var(--marrom) 8px
+  );
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Área da imagem */
+.imgArea {
   width: 100%;
-  border-radius: 10px;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--fundo2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-h3 {
-  font-size: 22px;
-  margin-top: 10px;
+.imgArea img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item:hover .imgArea img {
+  transform: scale(1.07);
+}
+
+/* Corpo */
+.corpo {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  background: white;
+}
+
+.corpo h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--texto);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Estrelas */
+.estrelas {
+  font-size: 14px;
+  color: var(--amarelo-escuro);
+  letter-spacing: 1px;
+  margin: 2px 0;
 }
 
 .preco {
-  margin-bottom: 10px;
-  color: #777;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--laranja);
+  margin: 0;
 }
 
-button {
-  background: #1b9e1b;
+.btnAdicionar {
+  background: var(--verde);
   color: white;
   padding: 10px;
   width: 100%;
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
+  border-bottom: 4px solid var(--verde-escuro);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
   cursor: pointer;
+  font-family: var(--fonte-corpo);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  margin-top: 8px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btnAdicionar:hover {
+  background: var(--verde-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--verde-escuro);
+}
+
+.btnAdicionar:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
 }

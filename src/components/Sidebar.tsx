@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./Sidebar.module.css";
 
 const CATEGORIAS = [
@@ -17,12 +16,11 @@ type SidebarProps = {
 export function Sidebar({ activeCategory, onSelect }: SidebarProps) {
   return (
     <aside className={styles.sidebar}>
+      <p className={styles.labelSecao}>Categorias</p>
       {CATEGORIAS.map((cat) => (
         <div
           key={cat.key}
-          className={`${styles.categoria} ${
-            activeCategory === cat.key ? styles.ativa : ""
-          }`}
+          className={`${styles.categoria} ${activeCategory === cat.key ? styles.ativa : ""}`}
           onClick={() => onSelect(cat.key)}
         >
           {cat.label}

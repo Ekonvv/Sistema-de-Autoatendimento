@@ -1,26 +1,38 @@
 .carrinho {
-  background: #ffffff;
+  background: var(--fundo3);
   padding: 20px;
-  border-left: 2px solid #ddd;
+  border-left: 4px solid var(--verde-escuro);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.08);
 }
 
 .carrinho h2 {
-  margin: 0 0 14px;
+  font-family: var(--fonte-titulo);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 400;
+  color: var(--verde-escuro);
+  margin: 0 0 14px;
+  letter-spacing: 1px;
 }
 
-/* ── Estado vazio ── */
+/* ── Vazio ── */
 .vazio {
   text-align: center;
   margin-top: 30px;
   flex: 1;
+  color: var(--verde-escuro);
+  opacity: 0.6;
 }
 
-/* ── Confirmação de pagamento ── */
+.vazio p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ── Confirmado ── */
 .confirmado {
   flex: 1;
   display: flex;
@@ -33,22 +45,34 @@
 
 .confirmado .icone {
   font-size: 60px;
+  animation: quicar 0.5s ease infinite alternate;
+}
+
+@keyframes quicar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
 }
 
 .confirmado h3 {
-  color: #1b9e1b;
-  font-weight: 800;
-  font-size: 20px;
+  font-family: var(--fonte-titulo);
+  color: var(--verde-escuro);
+  font-size: 22px;
+  font-weight: 400;
   margin: 0;
 }
 
 .confirmado p {
-  color: #777;
-  font-size: 14px;
+  color: var(--verde);
+  font-size: 13px;
+  font-weight: 700;
   margin: 0;
 }
 
-/* ── Lista de itens ── */
+/* ── Lista ── */
 .lista {
   list-style: none;
   padding: 0;
@@ -58,40 +82,40 @@
 }
 
 .lista::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
-
 .lista::-webkit-scrollbar-thumb {
-  background: #ddd;
+  background: var(--verde-claro);
   border-radius: 4px;
 }
 
-/* ── Item individual ── */
+/* ── Item ── */
 .itemLinha {
   display: grid;
   grid-template-columns: 1fr auto auto auto;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 2px dashed rgba(106, 191, 46, 0.3);
   gap: 8px;
 }
 
 .itemNome {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 800;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--texto);
 }
 
 .itemPreco {
-  color: #d80000;
-  font-weight: 700;
+  color: var(--laranja);
+  font-weight: 900;
   font-size: 13px;
   white-space: nowrap;
 }
 
-/* ── Controles de quantidade ── */
+/* ── Controles ── */
 .qtdControles {
   display: flex;
   align-items: center;
@@ -101,34 +125,55 @@
 .btnMenos {
   width: 26px;
   height: 26px;
-  background: #f0f0f0;
-  border: none;
-  border-radius: 6px;
+  background: #eee;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 900;
+  color: var(--texto);
   cursor: pointer;
+  transition: all 0.12s;
+  line-height: 1;
+}
+
+.btnMenos:hover {
+  background: #ddd;
+  border-color: #bbb;
 }
 
 .btnMais {
   width: 26px;
   height: 26px;
-  background: #d80000;
+  background: var(--verde);
   border: none;
-  border-radius: 6px;
+  border-bottom: 3px solid var(--verde-escuro);
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 900;
   color: white;
   cursor: pointer;
+  transition: all 0.12s;
+  line-height: 1;
+}
+
+.btnMais:hover {
+  background: var(--verde-claro);
+}
+.btnMais:active {
+  border-bottom-width: 1px;
+  transform: translateY(2px);
 }
 
 .inputQtd {
-  width: 36px;
+  width: 34px;
   height: 26px;
   text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 700;
+  border: 2px solid var(--verde-claro);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  background: white;
+  color: var(--texto);
 }
 
 .inputQtd::-webkit-inner-spin-button,
@@ -136,49 +181,70 @@
   opacity: 1;
 }
 
-/* ── Botão remover ── */
+/* ── Remover ── */
 .btnRemover {
   background: none;
   border: none;
   color: #ccc;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 2px;
   line-height: 1;
+  transition: color 0.15s;
 }
 
 .btnRemover:hover {
-  color: #d80000;
+  color: var(--laranja);
 }
 
 /* ── Rodapé ── */
 .total {
   display: flex;
   justify-content: space-between;
-  font-size: 22px;
-  margin: 20px 0;
+  font-size: 18px;
+  margin: 16px 0;
   flex-shrink: 0;
+  color: var(--texto);
+  font-weight: 800;
+}
+
+.total b {
+  color: var(--laranja);
+  font-size: 22px;
 }
 
 .pagar {
-  background: #d80000;
+  background: var(--laranja);
   color: white;
   border: none;
-  padding: 15px;
-  font-size: 20px;
-  border-radius: 10px;
+  border-bottom: 5px solid var(--laranja-escuro);
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
   cursor: pointer;
   flex-shrink: 0;
   width: 100%;
-  font-family: inherit;
-  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+}
+
+.pagar:not(:disabled):hover {
+  background: #ff9020;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--laranja-escuro);
+}
+
+.pagar:not(:disabled):active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
 }
 
 .pagar:disabled {
   background: #ccc;
+  border-color: #aaa;
+  color: #888;
   cursor: not-allowed;
-}
-
-.pagar:not(:disabled):hover {
-  background: #b80000;
 }

@@ -1,33 +1,85 @@
 .sidebar {
-  background: #eeeeee;
+  background: linear-gradient(180deg, #b8e05a 0%, #a0cc44 100%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 15px;
+  gap: 8px;
+  padding: 16px 12px;
   overflow-y: auto;
+  border-right: 4px solid var(--verde-escuro);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Bolinhas decorativas de fundo */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 40%
+    );
+  pointer-events: none;
+}
+
+.labelSecao {
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  color: var(--verde-escuro);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 4px;
+  margin-bottom: 4px;
+  opacity: 0.75;
 }
 
 .categoria {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--texto);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 800;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.15s ease;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.18s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-corpo);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .categoria:hover {
-  border-color: #d80000;
-  color: #d80000;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--amarelo);
+  transform: translateX(4px) scale(1.02);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
 }
 
 .ativa {
-  background: #d80000;
-  color: white;
-  font-weight: 700;
+  background: var(--amarelo) !important;
+  border-color: var(--amarelo-escuro) !important;
+  color: var(--marrom) !important;
+  box-shadow: 0 4px 0 var(--amarelo-escuro) !important;
+  transform: translateX(4px) !important;
 }
 
 .ativa:hover {
-  color: white;
+  background: var(--amarelo) !important;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--verde-escuro);
+  border-radius: 4px;
 }

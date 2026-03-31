@@ -1,17 +1,72 @@
 .topo {
-  background: #d80000;
+  background: linear-gradient(180deg, #7acc30 0%, #5aaa18 100%);
   color: white;
-  text-align: center;
-  padding: 20px 0;
+  padding: 14px 24px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-shrink: 0;
+  border-bottom: 5px solid var(--amarelo-escuro);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-.topo h1 {
-  font-size: 40px;
+/* Bolinhas decorativas de fundo */
+.topo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 30%
+    );
+}
+
+.info h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--amarelo);
+  text-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(255, 214, 0, 0.4);
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1;
+}
+
+.info p {
+  font-size: 13px;
   font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 3px 0 0;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
-.topo p {
-  margin-top: 5px;
-  font-size: 18px;
-  letter-spacing: 1px;
+/* Estrelas animadas */
+.estrelas {
+  font-size: 26px;
+  animation: girar 3s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes girar {
+  0%,
+  100% {
+    transform: rotate(-10deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1);
+  }
 }

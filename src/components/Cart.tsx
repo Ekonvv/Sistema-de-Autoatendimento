@@ -9,10 +9,12 @@ type CartItem = {
 type CartProps = {
   cart: CartItem[];
   paid: boolean;
+  cupomDesconto: number;   // percentual ex: 10
+  cupomCodigo: string;
   onRemove: (index: number) => void;
   onAdjust: (index: number, delta: number) => void;
   onUpdateQty: (index: number, value: string) => void;
-  onPay: () => void; // agora navega para a página de pagamento
+  onPay: () => void;
 };
 
 function parsePrice(price: string): number {
@@ -20,32 +22,27 @@ function parsePrice(price: string): number {
 }
 
 export function Cart({
-  cart,
-  paid,
-  onRemove,
-  onAdjust,
-  onUpdateQty,
-  onPay,
+  cart, paid, cupomDesconto, cupomCodigo,
+  onRemove, onAdjust, onUpdateQty, onPay,
 }: CartProps) {
-  const total = cart.reduce(
-    (sum, item) => sum + parsePrice(item.price) * item.qty,
-    0,
-  );
+  const subtotal  = cart.reduce((sum, item) => sum + parsePrice(item.price) * item.qty, 0);
+  const desconto  = subtotal * (cupomDesconto / 100);
+  const total     = subtotal - desconto;
 
   return (
     <aside className={styles.carrinho}>
       <h2>SEU PEDIDO</h2>
 
-      {/* Tela de confirmação */}
+      {/* Confirmado */}
       {paid && (
         <div className={styles.confirmado}>
           <span className={styles.icone}>✅</span>
           <h3>Pedido Confirmado!</h3>
-          <p>Estamos preparando tudo com carinho 🍔</p>
+          <p>Om Nom agradece! 🍬</p>
         </div>
       )}
 
-      {/* Carrinho vazio */}
+      {/* Vazio */}
       {!paid && cart.length === 0 && (
         <div className={styles.vazio}>
           <img
@@ -57,7 +54,7 @@ export function Cart({
         </div>
       )}
 
-      {/* Lista de itens */}
+      {/* Lista */}
       {!paid && cart.length > 0 && (
         <ul className={styles.lista}>
           {cart.map((item, index) => (
@@ -65,20 +62,11 @@ export function Cart({
               <span className={styles.itemNome}>{item.title}</span>
 
               <span className={styles.itemPreco}>
-                R${" "}
-                {(parsePrice(item.price) * item.qty)
-                  .toFixed(2)
-                  .replace(".", ",")}
+                R$ {(parsePrice(item.price) * item.qty).toFixed(2).replace(".", ",")}
               </span>
 
               <div className={styles.qtdControles}>
-                <button
-                  className={styles.btnMenos}
-                  onClick={() => onAdjust(index, -1)}
-                >
-                  −
-                </button>
-
+                <button className={styles.btnMenos} onClick={() => onAdjust(index, -1)}>−</button>
                 <input
                   className={styles.inputQtd}
                   type="number"
@@ -86,20 +74,10 @@ export function Cart({
                   value={item.qty}
                   onChange={(e) => onUpdateQty(index, e.target.value)}
                 />
-
-                <button
-                  className={styles.btnMais}
-                  onClick={() => onAdjust(index, 1)}
-                >
-                  +
-                </button>
+                <button className={styles.btnMais} onClick={() => onAdjust(index, 1)}>+</button>
               </div>
 
-              <button
-                className={styles.btnRemover}
-                onClick={() => onRemove(index)}
-                title="Remover"
-              >
+              <button className={styles.btnRemover} onClick={() => onRemove(index)} title="Remover">
                 ✕
               </button>
             </li>
@@ -109,7 +87,21 @@ export function Cart({
 
       {/* Rodapé */}
       {!paid && (
-        <>
+        <div className={styles.rodape}>
+          {/* Linha de subtotal */}
+          {cupomDesconto > 0 && cart.length > 0 && (
+            <>
+              <div className={styles.linhaSub}>
+                <span>Subtotal</span>
+                <span>R$ {subtotal.toFixed(2).replace(".", ",")}</span>
+              </div>
+              <div className={styles.linhaCupom}>
+                <span>🎉 Cupom Om Nom ({cupomCodigo})</span>
+                <span>- R$ {desconto.toFixed(2).replace(".", ",")}</span>
+              </div>
+            </>
+          )}
+
           <div className={styles.total}>
             <span>Total:</span>
             <b>R$ {total.toFixed(2).replace(".", ",")}</b>
@@ -122,7 +114,7 @@ export function Cart({
           >
             IR PARA O PAGAMENTO →
           </button>
-        </>
+        </div>
       )}
     </aside>
   );

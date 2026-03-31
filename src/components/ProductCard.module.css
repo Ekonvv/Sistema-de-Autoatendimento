@@ -9,11 +9,12 @@
   transition: all 0.2s ease;
   position: relative;
   box-shadow: 0 5px 0 var(--verde-escuro);
+  height: 100%;
 }
 
 .item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 0 var(--verde-escuro);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 0 var(--verde-escuro);
   border-color: var(--amarelo);
 }
 
@@ -33,57 +34,55 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Área da imagem */
 .imgArea {
   width: 100%;
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  background: var(--fundo2);
+  height: 210px;
+  background: #f8f9e8;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .imgArea img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
+  border-radius: 8px;
 }
 
 .item:hover .imgArea img {
-  transform: scale(1.07);
+  transform: scale(1.1);
 }
 
-/* Corpo */
+/* Corpo do card */
 .corpo {
-  padding: 12px 14px 14px;
+  padding: 14px 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
   background: white;
 }
 
 .corpo h3 {
   font-family: var(--fonte-titulo);
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 17.5px;
+  font-weight: 500;
   color: var(--texto);
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
-/* Estrelas */
 .estrelas {
   font-size: 14px;
   color: var(--amarelo-escuro);
-  letter-spacing: 1px;
-  margin: 2px 0;
+  margin: 3px 0 4px;
 }
 
 .preco {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 900;
   color: var(--laranja);
   margin: 0;
@@ -92,26 +91,25 @@
 .btnAdicionar {
   background: var(--verde);
   color: white;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border: none;
   border-bottom: 4px solid var(--verde-escuro);
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
   cursor: pointer;
   font-family: var(--fonte-corpo);
   letter-spacing: 0.5px;
   text-transform: uppercase;
   transition: all 0.15s ease;
-  margin-top: 8px;
+  margin-top: auto;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btnAdicionar:hover {
   background: var(--verde-claro);
   transform: translateY(-2px);
-  box-shadow: 0 4px 0 var(--verde-escuro);
 }
 
 .btnAdicionar:active {

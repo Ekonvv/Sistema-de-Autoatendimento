@@ -17,31 +17,31 @@ const PRODUCTS: Record<
   { title: string; price: string; img: string }[]
 > = {
   Lanches: [
-    { title: "Cheeseburger", price: "R$ 12,90", img: "./Cheeseburger.jpg" },
+    { title: "Cheeseburger", price: "R$ 12,90", img: "./Cheeseburger.png" },
     { title: "Duplo Bacon", price: "R$ 18,90", img: "./DuploBacon.png" },
-    { title: "Chicken Crispy", price: "R$ 14,90", img: "./ChickenCrispy.avif" },
+    { title: "Chicken Crispy", price: "R$ 14,90", img: "./ChickenCrispy.png" },
     { title: "Mega Burguer", price: "R$ 21,90", img: "./MegaBurguer.jpg" },
-    { title: "Veggie Smash", price: "R$ 16,90", img: "./VeggieSmash.jpg" },
+    { title: "Veggie Smash", price: "R$ 16,90", img: "./imagens.png" },
   ],
   Acompanhamentos: [
-    { title: "Batata Frita", price: "R$ 8,90", img: "../BatataFrita.jpg" },
-    { title: "Onion Rings", price: "R$ 10,90", img: "../OnionRings.jpg" },
+    { title: "Batata Frita", price: "R$ 8,90", img: "./Batata.jpg" },
+    { title: "Onion Rings", price: "R$ 10,90", img: "./OnionRings.jpg" },
     { title: "Nuggets (8 un)", price: "R$ 11,90", img: "./Nuggets.jpg" },
   ],
   Bebidas: [
-    { title: "Refrigerante 400ml", price: "R$ 6,90", img: ".Refri.jpg" },
-    { title: "Água", price: "R$ 14,90", img: "" },
+    { title: "Refrigerante 400ml", price: "R$ 6,90", img: "./Refri.jpg" },
+    { title: "Água", price: "R$ 14,90", img: "./imagens.png" },
     { title: "Suco Natural", price: "R$ 9,90", img: "./Suco.jpg" },
   ],
   Sobremesas: [
     { title: "Sorvete 2 Bolas", price: "R$ 9,90", img: "./Sorvete.jpg" },
-    { title: "Brownie Quente", price: "R$ 13,90", img: "./Brownie.jpg" },
-    { title: "Petit Gateau", price: "R$ 15,90", img: "./PetitGateau.jpg" },
+    { title: "Brownie Quente", price: "R$ 13,90", img: "./imagens.png" },
+    { title: "Petit Gateau", price: "R$ 15,90", img: "./Petit.jpg" },
   ],
   Combos: [
-    { title: "Combo Classic", price: "R$ 22,90", img: "..ComboClassic.jpg" },
-    { title: "Combo Premium", price: "R$ 32,90", img: "..ComboPremium.jpg" },
-    { title: "Combo Vegano", price: "R$ 28,90", img: "..ComboVegano.jpg" },
+    { title: "Combo Classic", price: "R$ 22,90", img: "./ComboClassic.png" },
+    { title: "Combo Premium", price: "R$ 32,90", img: "./ComboPremium.png" },
+    { title: "Combo Vegano", price: "R$ 28,90", img: "./ComboVegano.png" },
   ],
 };
 

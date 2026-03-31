@@ -9,7 +9,7 @@ type CartItem = {
 type CartProps = {
   cart: CartItem[];
   paid: boolean;
-  cupomDesconto: number;   // percentual ex: 10
+  cupomDesconto: number; // percentual ex: 10
   cupomCodigo: string;
   onRemove: (index: number) => void;
   onAdjust: (index: number, delta: number) => void;
@@ -22,12 +22,21 @@ function parsePrice(price: string): number {
 }
 
 export function Cart({
-  cart, paid, cupomDesconto, cupomCodigo,
-  onRemove, onAdjust, onUpdateQty, onPay,
+  cart,
+  paid,
+  cupomDesconto,
+  cupomCodigo,
+  onRemove,
+  onAdjust,
+  onUpdateQty,
+  onPay,
 }: CartProps) {
-  const subtotal  = cart.reduce((sum, item) => sum + parsePrice(item.price) * item.qty, 0);
-  const desconto  = subtotal * (cupomDesconto / 100);
-  const total     = subtotal - desconto;
+  const subtotal = cart.reduce(
+    (sum, item) => sum + parsePrice(item.price) * item.qty,
+    0,
+  );
+  const desconto = subtotal * (cupomDesconto / 100);
+  const total = subtotal - desconto;
 
   return (
     <aside className={styles.carrinho}>
@@ -62,11 +71,19 @@ export function Cart({
               <span className={styles.itemNome}>{item.title}</span>
 
               <span className={styles.itemPreco}>
-                R$ {(parsePrice(item.price) * item.qty).toFixed(2).replace(".", ",")}
+                R${" "}
+                {(parsePrice(item.price) * item.qty)
+                  .toFixed(2)
+                  .replace(".", ",")}
               </span>
 
               <div className={styles.qtdControles}>
-                <button className={styles.btnMenos} onClick={() => onAdjust(index, -1)}>−</button>
+                <button
+                  className={styles.btnMenos}
+                  onClick={() => onAdjust(index, -1)}
+                >
+                  −
+                </button>
                 <input
                   className={styles.inputQtd}
                   type="number"
@@ -74,10 +91,19 @@ export function Cart({
                   value={item.qty}
                   onChange={(e) => onUpdateQty(index, e.target.value)}
                 />
-                <button className={styles.btnMais} onClick={() => onAdjust(index, 1)}>+</button>
+                <button
+                  className={styles.btnMais}
+                  onClick={() => onAdjust(index, 1)}
+                >
+                  +
+                </button>
               </div>
 
-              <button className={styles.btnRemover} onClick={() => onRemove(index)} title="Remover">
+              <button
+                className={styles.btnRemover}
+                onClick={() => onRemove(index)}
+                title="Remover"
+              >
                 ✕
               </button>
             </li>

@@ -63,14 +63,15 @@
   display: grid;
   grid-template-columns: 210px 1fr 340px;
   overflow: hidden;
+  min-height: 0;
 }
 
 /* ── Área de produtos ── */
 .produtos {
-  padding: 22px 18px;
+  padding: 24px 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 24px;
   overflow-y: auto;
   align-content: start;
   background: transparent;
@@ -79,6 +80,7 @@
 .produtos::-webkit-scrollbar {
   width: 6px;
 }
+
 .produtos::-webkit-scrollbar-thumb {
   background: var(--verde);
   border-radius: 10px;

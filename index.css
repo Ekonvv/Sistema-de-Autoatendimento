@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --verde: #6abf2e;
+  --verde-escuro: #4a8c1c;
+  --verde-claro: #a8e063;
+  --verde-fundo: #c8e87a;
+  --amarelo: #ffd600;
+  --amarelo-escuro: #f9a825;
+  --laranja: #ff7a00;
+  --laranja-escuro: #d45f00;
+  --fundo: #d6ef7a;
+  --fundo2: #e8f5a3;
+  --fundo3: #f5ffd0;
+  --marrom: #7b4f1e;
+  --marrom-claro: #c48a3f;
+  --branco: #ffffff;
+  --texto: #3a2a0a;
+  --fonte-titulo: "Fredoka One", cursive;
+  --fonte-corpo: "Nunito", sans-serif;
+}
+
+body {
+  background-color: var(--fundo);
+  font-family: var(--fonte-corpo);
+  overflow: hidden;
+}

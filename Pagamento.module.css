@@ -1,0 +1,425 @@
+.pagina {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte-corpo);
+  overflow-y: auto;
+  background:
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(255, 214, 0, 0.2) 0%,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 122, 0, 0.12) 0%,
+      transparent 35%
+    ),
+    linear-gradient(160deg, #c8e87a 0%, #b0d855 50%, #c8e87a 100%);
+}
+
+/* ── Header ── */
+.header {
+  background: linear-gradient(180deg, #7acc30 0%, #5aaa18 100%);
+  color: white;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  border-bottom: 5px solid var(--amarelo-escuro);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btnVoltar {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  transition: background 0.15s;
+}
+
+.btnVoltar:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.header h1 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  margin: 0;
+  font-size: 26px;
+  color: var(--amarelo);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+/* ── Layout ── */
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 28px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ── Card formulário ── */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  border: 3px solid var(--verde-claro);
+  box-shadow: 0 6px 0 var(--verde-escuro);
+}
+
+.card h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: var(--verde-escuro);
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--verde-claro);
+  letter-spacing: 1px;
+}
+
+/* ── Campos ── */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.campo label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--verde-escuro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.campo input {
+  padding: 11px 14px;
+  border: 2px solid var(--verde-claro);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: var(--fonte-corpo);
+  color: var(--texto);
+  background: var(--fundo3);
+  transition: border-color 0.15s;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--verde);
+  background: white;
+}
+
+.linhaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Métodos ── */
+.metodos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.metodo {
+  border: 2px solid var(--verde-claro);
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--texto);
+  background: var(--fundo2);
+  font-family: var(--fonte-corpo);
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.metodo:hover {
+  border-color: var(--verde);
+  background: white;
+  transform: translateY(-2px);
+}
+
+.metodoAtivo {
+  border-color: var(--amarelo-escuro) !important;
+  background: var(--amarelo) !important;
+  color: var(--marrom) !important;
+  box-shadow: 0 4px 0 var(--amarelo-escuro);
+}
+
+.metodoIcone {
+  font-size: 20px;
+}
+
+/* ── Aviso ── */
+.aviso {
+  background: #fff8e1;
+  border: 2px solid var(--amarelo-escuro);
+  color: var(--marrom);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+/* ── Botão confirmar ── */
+.btnConfirmar {
+  background: var(--laranja);
+  color: white;
+  border: none;
+  border-bottom: 5px solid var(--laranja-escuro);
+  padding: 16px;
+  font-size: 16px;
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  letter-spacing: 1px;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+}
+
+.btnConfirmar:hover:not(:disabled) {
+  background: #ff9020;
+  transform: translateY(-2px);
+}
+
+.btnConfirmar:active:not(:disabled) {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.btnConfirmar:disabled {
+  background: #ccc;
+  border-color: #aaa;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* ── Nota fiscal ── */
+.nota {
+  background: #fffde7;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--amarelo);
+  box-shadow: 0 6px 0 var(--amarelo-escuro);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 27px,
+    rgba(0, 0, 0, 0.03) 27px,
+    rgba(0, 0, 0, 0.03) 28px
+  );
+}
+
+.notaCabecalho {
+  text-align: center;
+  border-bottom: 2px dashed #ccc;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.notaCabecalho h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  margin: 0 0 4px;
+  font-size: 22px;
+  color: var(--verde-escuro);
+  border: none;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+.notaCabecalho p {
+  margin: 2px 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.notaNumero {
+  font-size: 10px !important;
+  color: #aaa !important;
+  margin-top: 8px !important;
+  font-family: monospace;
+}
+
+.notaCliente {
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  color: #333;
+}
+.notaCpf {
+  font-size: 12px;
+  color: #888;
+}
+
+.notaItens {
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.notaItemHeader {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 4px;
+}
+
+.notaItem {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dotted #ddd;
+  font-size: 13px;
+}
+
+.notaItemNome {
+  color: #333;
+  font-weight: 600;
+}
+.notaItemQtd {
+  color: #888;
+  text-align: center;
+  font-size: 12px;
+}
+.notaItemTotal {
+  font-weight: 800;
+  color: var(--laranja);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.notaTotais {
+  border-top: 2px dashed #ccc;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.notaLinha {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+}
+.notaLinhaTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--verde-escuro);
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #ccc;
+}
+
+.notaRodape {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 2px dashed #ccc;
+  padding-top: 12px;
+}
+
+.notaRodape p {
+  margin: 2px 0;
+}
+
+/* ── Sucesso ── */
+.sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 40px;
+  gap: 14px;
+}
+
+.icone {
+  font-size: 80px;
+  animation: quicar 0.5s ease infinite alternate;
+}
+
+@keyframes quicar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-14px);
+  }
+}
+
+.sucesso h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  color: var(--verde-escuro);
+  font-size: 32px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.sucesso p {
+  color: var(--verde);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.protocolo {
+  font-size: 13px;
+  color: var(--marrom);
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--amarelo);
+}
+
+@media (max-width: 768px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+}

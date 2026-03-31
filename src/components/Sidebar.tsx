@@ -159,7 +159,6 @@ function OmNomAnimado({ bocaAberta }: { bocaAberta: number }) {
   );
 }
 
-// ─────────────────────────────────────────────
 type SidebarProps = {
   activeCategory: string;
   onSelect: (category: string) => void;

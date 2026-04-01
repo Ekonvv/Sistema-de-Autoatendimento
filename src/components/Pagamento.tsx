@@ -53,8 +53,7 @@ export function Pagamento({ cart, cupomDesconto, cupomCodigo, onVoltar, onConfir
 
   const subtotal = cart.reduce((sum, i) => sum + parsePrice(i.price) * i.qty, 0);
   const desconto = subtotal * (cupomDesconto / 100);
-  const taxa     = subtotal * 0.1;
-  const total    = subtotal - desconto + taxa;
+  const total    = subtotal - desconto;
   const agora    = new Date().toLocaleString("pt-BR");
 
   function podePagar(): boolean {
@@ -230,10 +229,7 @@ export function Pagamento({ cart, cupomDesconto, cupomCodigo, onVoltar, onConfir
               </div>
             )}
 
-            <div className={styles.notaLinha}>
-              <span>Taxa de serviço (10%)</span>
-              <span>R$ {taxa.toFixed(2).replace(".", ",")}</span>
-            </div>
+
             <div className={styles.notaLinha}>
               <span>Forma de pagamento</span>
               <span>{METODOS.find((m) => m.key === metodo)?.label}</span>

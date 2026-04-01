@@ -21,7 +21,7 @@ const PRODUCTS: Record<
     { title: "Duplo Bacon", price: "R$ 18,90", img: "./DuploBacon.png" },
     { title: "Chicken Crispy", price: "R$ 14,90", img: "./ChickenCrispy.png" },
     { title: "Mega Burguer", price: "R$ 21,90", img: "./MegaBurguer.jpg" },
-    { title: "Veggie Smash", price: "R$ 16,90", img: "./imagens.png" },
+    { title: "Veggie Smash", price: "R$ 16,90", img: "./Imagens.png" },
   ],
   Acompanhamentos: [
     { title: "Batata Frita", price: "R$ 8,90", img: "./Batata.jpg" },
@@ -30,12 +30,12 @@ const PRODUCTS: Record<
   ],
   Bebidas: [
     { title: "Refrigerante 400ml", price: "R$ 6,90", img: "./Refri.jpg" },
-    { title: "Água", price: "R$ 14,90", img: "./imagens.png" },
+    { title: "Água", price: "R$ 14,90", img: "./Imagens.png" },
     { title: "Suco Natural", price: "R$ 9,90", img: "./Suco.jpg" },
   ],
   Sobremesas: [
     { title: "Sorvete 2 Bolas", price: "R$ 9,90", img: "./Sorvete.jpg" },
-    { title: "Brownie Quente", price: "R$ 13,90", img: "./imagens.png" },
+    { title: "Brownie Quente", price: "R$ 13,90", img: "./Imagens.png" },
     { title: "Petit Gateau", price: "R$ 15,90", img: "./Petit.jpg" },
   ],
   Combos: [
